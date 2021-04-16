@@ -33,7 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity my_alu is
     Port ( en : in std_logic;
-           Opcode : in STD_LOGIC_VECTOR (15 downto 0);
+           Opcode : in STD_LOGIC_VECTOR (3 downto 0);
            A : in STD_LOGIC_VECTOR (15 downto 0);
            B : in STD_LOGIC_VECTOR (15 downto 0);
            F : out STD_LOGIC_VECTOR (15 downto 0));
