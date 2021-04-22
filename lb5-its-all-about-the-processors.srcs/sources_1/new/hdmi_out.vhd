@@ -34,9 +34,9 @@ use IEEE.NUMERIC_STD.ALL;
 entity hdmi_out is
     Port ( clk : in STD_LOGIC;
            en : in STD_LOGIC;
-           r : in STD_LOGIC_VECTOR (2 downto 0);
-           g : in STD_LOGIC_VECTOR (2 downto 0);
-           b : in STD_LOGIC_VECTOR (1 downto 0);
+           r : in STD_LOGIC_VECTOR (4 downto 0);
+           g : in STD_LOGIC_VECTOR (5 downto 0);
+           b : in STD_LOGIC_VECTOR (4 downto 0);
            hs : in STD_LOGIC;
            vs : in STD_LOGIC;
            vid : in STD_LOGIC;
@@ -64,9 +64,9 @@ architecture Behavioral of hdmi_out is
     signal rgb : std_logic_vector(23 downto 0);
     signal r8, g8, b8 : unsigned(7 downto 0);
 begin
-    r8 <= to_unsigned(to_integer(unsigned(r)) * 255 / 7, r8'length);
-    g8 <= to_unsigned(to_integer(unsigned(g)) * 255 / 7, g8'length);
-    b8 <= to_unsigned(to_integer(unsigned(b)) * 255 / 3, b8'length);
+    r8 <= to_unsigned(to_integer(unsigned(r)) * 255 / 31, r8'length);
+    g8 <= to_unsigned(to_integer(unsigned(g)) * 255 / 63, g8'length);
+    b8 <= to_unsigned(to_integer(unsigned(b)) * 255 / 31, b8'length);
     rgb <= std_logic_vector(r8) & std_logic_vector(g8) & std_logic_vector(b8);
 
     vga2hdmi : rgb2dvi_0

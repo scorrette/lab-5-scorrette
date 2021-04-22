@@ -35,13 +35,11 @@ entity clock_div_tb is
 end clock_div_tb;
 
 architecture testbench of clock_div_tb is
-    constant tb_div_int : integer := 62500000;
-    
     signal tb_clk : std_logic := '0';
-    signal tb_div : std_logic;
+    signal tb_div_0, tb_div_1 : std_logic;
     
     component clock_div is
-        Generic ( div_int : integer );
+        Generic ( div_int : integer := 62500000);
         Port ( clk : in std_logic;
                div : out std_logic );
     end component;
@@ -56,12 +54,16 @@ begin
         tb_clk <= '0';
     end process clk_gen_proc;
     
-    dut : clock_div
-    generic map (
-        div_int => tb_div_int
-    )
+    div_0 : clock_div
+    generic map (div_int => 1085)
     port map (
         clk => tb_clk,
-        div => tb_div
+        div => tb_div_0
+    );
+    div_1 : clock_div
+    generic map (div_int => 5)
+    port map (
+        clk => tb_clk,
+        div => tb_div_1
     );
 end testbench;

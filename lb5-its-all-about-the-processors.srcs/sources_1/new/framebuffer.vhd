@@ -50,14 +50,7 @@ begin
         if rising_edge(clk1) then
             if rst = '1' then
                 vld <= (others => (others => '0'));
-            end if;
-        end if;
-    end process;
-
-    process(clk1)
-    begin
-        if rising_edge(clk1) then
-            if en1 = '1' then
+            elsif en1 = '1' then
                 if wr_en1 = '1' then
                     mem(to_integer(unsigned(addr1))) <= din1;
                     vld(to_integer(unsigned(addr1))) <= "1";

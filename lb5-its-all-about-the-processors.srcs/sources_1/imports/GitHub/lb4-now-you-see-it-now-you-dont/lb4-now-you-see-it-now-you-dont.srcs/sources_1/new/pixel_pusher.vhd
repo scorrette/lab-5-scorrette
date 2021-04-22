@@ -38,14 +38,14 @@ entity pixel_pusher is
            pixel : in STD_LOGIC_VECTOR (15 downto 0);
            hcount : in STD_LOGIC_VECTOR (9 downto 0);
            vid : in STD_LOGIC;
-           r : out STD_LOGIC_VECTOR (2 downto 0);
-           b : out STD_LOGIC_VECTOR (1 downto 0);
-           g : out STD_LOGIC_VECTOR (2 downto 0);
+           r : out STD_LOGIC_VECTOR (4 downto 0);
+           b : out STD_LOGIC_VECTOR (4 downto 0);
+           g : out STD_LOGIC_VECTOR (5 downto 0);
            addr : out STD_LOGIC_VECTOR (11 downto 0));
 end pixel_pusher;
 
 architecture img64x64 of pixel_pusher is
-    signal addr_count : std_logic_vector (17 downto 0) := (others => '0');
+    signal addr_count : std_logic_vector (11 downto 0) := (others => '0');
 begin
     addr <= addr_count;
     
